@@ -18,10 +18,15 @@ const textContainer = document.querySelector("#text-container");
 async function showWeather(ville) {
     try {
         // Déclare une clé API pour accéder au service WeatherAPI.
-        const marinaKey = "dee9c68a0d304fbe91095156250304";
+        // const marinaKey = "dee9c68a0d304fbe91095156250304";
 
         // Effectue une requête HTTP GET vers l'API WeatherAPI avec la clé API et la ville spécifiée.
-        const reponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${marinaKey}&q=${ville}&aqi=no&days=4`);
+
+        //je met cette ligne  ci dessous en commentaire (appel a l'api mis dans doosier api)
+        // const reponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${marinaKey}&q=${ville}&aqi=no&days=4`);
+
+         // je remplace par celle ci qui fait appel a api/route(dossier api),pour eviter d'exposer ma clé
+        const reponse = await fetch(`/api/meteo?city=${ville}`);
 
         // Attend la réponse de l'API et la convertit en JSON pour obtenir les données météo.
         const weather = await reponse.json();
